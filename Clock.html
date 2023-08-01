@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  <style>
+    body {
+      /* background-color: #212121; */
+      background-image: linear-gradient(to top right, #c58b2f, #69bfff);
+      color: #fff;
+    }
+
+    .center {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #clock {
+      font-size: 4.2rem;
+      /* background-color: #f8a318; */
+      padding: 20px 60px;
+      margin-top: 12px;
+      border-radius: 23px;
+      color: black;
+    }
+
+    #banner {
+      font-size: 60px;
+      color: brown;
+    }
+
+    #today {
+      position: absolute;
+      bottom: 10px;
+      right: 190px;
+      font-size: 35px;
+      color: blueviolet;
+    }
+
+    #todayDate {
+      position: absolute;
+      bottom: 10px;
+      right: 38px;
+      font-size: 33px;
+      color: green;
+    }
+   
+    @media only screen and (max-width:600px) {
+     #clock{
+      font-size: 1.0rem;
+     }
+     #banner{
+      font-size: 40px;
+     }
+     #today{
+
+      bottom: 5px;
+      right: 135px;
+      font-size: 20px;
+
+     }
+     #todayDate{
+      bottom: 5px;
+      right: 30px;
+      font-size: 20px;
+
+     }
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center">
+    <div id="banner"><span>Your Time Stamp:</span></div>
+    <div id="today"><span>Today's Date:</span></div>
+    <div id="clock"></div>
+    <div id="todayDate"></div>
+  </div>
+  <script>
+
+    function currentTime() {
+      let date = new Date()
+      let hh = date.getHours()
+      let mm = date.getMinutes()
+      let ss = date.getSeconds()
+      let session = "AM"
+
+      if (hh == 0) {
+        hh = 12;
+      } else if (hh > 12) {
+        hh = hh - 12;
+        session = "PM"
+      }
+      let time = hh + ":" + mm + ":" + ss + " " + session
+
+      const clock = document.getElementById('clock');
+      clock.innerHTML = time;
+
+      let todayDate = document.getElementById('todayDate');
+      todayDate.innerHTML = date.toLocaleDateString();
+      let t = setInterval(function () {
+        currentTime()
+      }, 1000)
+    }
+    currentTime()
+
+
+
+
+  </script>
+</body>
+
+</html>
