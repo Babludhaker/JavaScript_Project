@@ -36,4 +36,4 @@ The Guess Number Game is an interactive game where users can try to guess a rand
 ***************How to Use*************
 To use this web application, simply follow these steps:
 
-open this website link and can use it: 
+open this website link and can use it: https://babludhaker.github.io/JavaScript_Project/
