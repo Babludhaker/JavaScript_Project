@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>background-Color Changing</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body style="background-color: #212121; color: #fff">
+
+
+    <h1>Start should change the Background color every second</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <script>
+        const randomColor = function () {
+            const hex = '0123456789ABCDEF';
+            let color = '#';
+
+            for (let i = 0; i < 6; i++) {
+                color += Math.floor(Math.random() * 9);
+            }
+            return color;
+        };
+        //Start Function to execute Color Changing Process
+        let IntervalId;
+        const startChangeColor = function () {
+            if (!IntervalId) {
+                IntervalId = setInterval(changeBgColor, 1000);
+            }
+            function changeBgColor() {
+                document.body.style.backgroundColor = randomColor();
+            }
+        };
+        //Stop Function to execute Color Changing process
+        const stopChangeColor = function () {
+            clearInterval(IntervalId);
+            IntervalId = null;
+        };
+        document.querySelector('#start').addEventListener('click', startChangeColor);
+        document.querySelector('#stop').addEventListener('click', stopChangeColor);
+
+    </script>
+</body>
+
+</html>
